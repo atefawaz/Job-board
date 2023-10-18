@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Description - Web Developer</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/home.css" />
+   <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    font-size: 24px; 
+}
+
+.company-image {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.job-info {
+    margin-top: 20px;
+}
+
+.job-info p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 16px; 
+}
+
+.apply-button {
+    background-color: #0073e6;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Style for the container div */
+.application-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for labels */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px; 
+}
+
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px; 
+    margin-bottom: 15px;
+    border: 2px solid #ccc; 
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+
+ .submit{
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; 
+}
+
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.application-form {
+    display: none;
+ 
+}
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header__left">
+          <img src="../static/jobeed_logo.png" alt="" />
+          <div class="header__search">
+            <i class="material-icons"> search </i>
+            <input type="text" />
+          </div>
+        </div>
+  
+        <div class="header__right">
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> home </i>
+            <h3>Home</h3>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> supervisor_account </i>
+            <a href="{{ url_for('admin')}}"><h3 class="logout">Admin only</h3></a>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> business_center </i>
+            <a href="{{ url_for('jobs')}}"><h3 class="logout">Jobs</h3></a>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> chat </i>
+            <h3>Messaging</h3>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> notifications </i>
+            <h3>Notifications</h3>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> account_circle </i>
+            <a href="{{ url_for('logout')}}"><h3 class="logout">logout</h3></a>
+            
+          </div>
+        </div>
+      </div>
+      <!-- Header Ends -->
+    
+    <div class="container">
+        <img class="company-image" src="{{job.url}}" alt="Company Image"> 
+        <h1>Job Title: {{job.job_title}}</h1>
+        <div class="job-info">
+            <p><strong>Company:</strong> {{job.company_name}}</p>
+            <p><strong>Location:</strong> {{job.location}}</p>
+            <p><strong>Type:</strong> Full-time</p>
+            <p><strong>Price range:</strong> {{job.price_range}}</p>
+            <p><strong>Posted:</strong> 2 days ago</p>
+        </div>
+        <h2>Job Description</h2>
+        <p>
+            {{job.job_description}}
+        </p>
+        <p>
+            {{job.application_instructions}}
+        </p>
+        <h2>Requirements</h2>
+        <ul>
+            <li>{{job.requirements.education}}</li>
+            <li>{{job.requirements.experience}}</li>
+        </ul>
+        <button id="applyButton" class="apply-button" type="submit">Apply Now</button>
+
+<!-- Hidden application form -->
+<div id="applicationForm" class="application-form">
+    <form id="applicationSubmitForm" action="{{ url_for('submit_application', job_id=job['_id']) }}" method="POST" enctype="multipart/form-data">
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label for="family_name">Family Name:</label>
+        <input type="text" name="family_name" required>
+        <br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" required>
+        <br>
+        <label for="postal_code">Postal Code:</label>
+        <input type="text" name="postal_code" required>
+        <br>
+        <label for="city">City:</label>
+        <input type="text" name="city" required>
+        <br>
+        <br>
+        <button type="submit" class="submit"  > Submit your application here !</button>
+    </form>
+</div>
+</div>
+<script>
+    const applyButton = document.getElementById('applyButton');
+    const applicationForm = document.getElementById('applicationForm');
+
+    applyButton.addEventListener('click', () => {
+        applicationForm.style.display = 'block';
+    });
+</script>
+
+
+</body>
+</html>

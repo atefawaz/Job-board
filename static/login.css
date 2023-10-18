@@ -1,0 +1,147 @@
+body {
+    background-color: black;
+}
+img {
+    width:20%;
+    margin:auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#container {
+    /* border: 1px solid rgba(0, 0, 0, 0.416); */
+    background-color: white;
+    width: 35%;
+    margin: auto;
+    text-align: left;
+    /* height: 900px; */
+    padding: 40px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    /* box-sizing: border-box; */
+    
+
+
+}
+#container>button {
+    width: 95%;
+    /* margin:auto; */
+    text-align: center;
+    align-items: center;
+    margin-left: 10px;
+    height: 50px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    /* border-color: rgba(128, 128, 128, 0); */
+    border: none;
+    margin-top: -25px;
+    font-family: sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    
+}
+
+p {
+    margin-bottom: 30px;
+    
+    
+}
+hr ~ p {
+    text-align: center;
+    
+}
+
+#email {
+    width: 99%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: rgba(8, 1, 1, 0.571);
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+#Password {
+    border-radius: 5px;
+    width: 99%;
+    height: 
+    40px;
+    border-color: rgba(24, 22, 22, 0.678);
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+/* #foot{
+    text-align: justify;
+} */
+.TandC{
+    width: 100%;
+    text-align: justify;
+    /* margin: auto; */
+
+}
+.TandC > p {
+    width:100%;
+    text-align: justify;
+    font-family: sans-serif;
+    color: grey;
+}
+#signIn {
+    width:100%;
+    background-color: #164081;
+    color: white;
+    border-radius: 5px;
+    margin: auto;
+        text-align: center;
+        align-items: center;
+        /* margin-left: 10px; */
+        height: 40px;
+        margin-bottom: 30px;
+        border-radius: 5px;
+        /* border-color: rgba(128, 128, 128, 0); */
+        border: none;
+        margin-top: -25px;
+        font-family: sans-serif;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.fa,.fa-brands{
+    height: 10px;
+    width: 12px;
+    /* margin-top: 20px; */
+    
+}
+label {
+    color: rgba(0, 0, 0, 0.716);
+    font-size: 20px;
+    font-family: sans-serif;
+
+}
+input {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    
+}
+#signIn:hover {
+   background-color: #356cbe;
+}
+p~button:hover {
+    background-color: #7fa6e2; 
+    border-color: #1055bd;
+}
+#footer {
+    color: white;
+    
+}
+a {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+label {
+    color: rgba(0, 0, 0, 0.716);
+    font-size: 15px;
+    font-family: sans-serif;
+font-weight: bold;
+}

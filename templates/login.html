@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In | Indeed Accounts</title>
+   
+    <style>
+          body {
+    background-color: black;
+}
+img {
+    width:20%;
+    margin:auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#container {
+ 
+
+    width: 35%;
+    background-color: white;
+    margin: auto;
+    text-align: left;
+
+    padding: 30px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+
+}
+
+#Username {
+    width: 99%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: rgba(8, 1, 1, 0.571);
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+#Password {
+    border-radius: 5px;
+    width: 99%;
+    height: 40px;
+    border-color:rgba(8, 1, 1, 0.571);
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+#signUp {
+    width:100%;
+    background-color: #164081;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+    border-color: #F3F2F1;
+    
+}
+#signUp:hover {
+    background-color: #456eaa;
+}
+.TandC{
+    width: 100%;
+    text-align: justify;
+    /* margin: auto; */
+
+}
+.TandC > p {
+    width:100%;
+    text-align: justify;
+    font-family: sans-serif;
+    color: grey;
+} 
+input {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    
+}
+label {
+    color: rgba(0, 0, 0, 0.716);
+    font-size: 15px;
+    font-family: sans-serif;
+font-weight: bold;
+}
+    </style>
+</head>
+<body>
+  <img src="../static/jobeed_logo.png" alt="logo" />
+
+  <div id="container">
+      <h2>Ready to take the next step?</h2>
+      <p>Create an account or Sign in.</p>
+      <form method="POST">
+          {{ form.hidden_tag() }}
+          <div>
+              <label for="username">Username</label>
+              {{ form.username(id="Username") }}
+              {% if form.username.errors %}
+                  <span style="color: red;">{{ form.username.errors[0] }}</span><br>
+              {% endif %}
+          </div>
+          <div>
+              <label for="password">Password</label>
+              {{ form.password(id="Password") }}
+              {% if form.password.errors %}
+                  <span style="color: red;">{{ form.password.errors[0] }}</span><br>
+              {% endif %}
+          </div>
+
+          <div class="TandC">
+              <p>
+                  By creating an account or logging in, you understand and agree to
+                  Jobeed's <a href="https://jobeed.com/terms">terms</a>.
+                  You also acknowledge our <a href="https://jobeed.com/cookies">Cookie</a>
+                  and <a href="https://jobeed.com/privacy">Privacy policies.</a>
+                  You will receive marketing messages from Jobeed and may opt out at
+                  any time by following the unsubscribe link in our messages or as
+                  detailed in our terms.
+              </p>
+              <button id="signUp" type="submit">LOG IN</button>
+              <p>Don't have an account? <a href="{{ url_for('signup') }}">SIGN UP NOW</a></p>
+          </div>
+      </form>
+  </div>
+  <p id="footer">© 2023 Jobeed</p>
+</body>

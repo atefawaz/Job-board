@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../static/signup.css">
+    
+    <title>SIGN UP | Indeed Accounts</title>
+    <style>
+      body {
+    background-color: black;
+}
+img {
+    width:20%;
+    margin:auto;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#container {
+    /* border: 1px solid rgba(0, 0, 0, 0.416); */
+
+    width: 35%;
+    background-color: white;
+    margin: auto;
+    text-align: left;
+    /* height:600px; */
+    padding: 30px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    /* box-sizing: border-box; */
+}
+
+#Username {
+    width: 99%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: rgba(8, 1, 1, 0.571);
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+#Password {
+    border-radius: 5px;
+    width: 99%;
+    height: 40px;
+    border-color:rgba(8, 1, 1, 0.571);
+    margin: 10px auto;
+    font-family: sans-serif;
+}
+#signUp {
+    width:100%;
+    background-color: #164081;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
+    border-color: #F3F2F1;
+    
+}
+#signUp:hover {
+    background-color: #456eaa;
+}
+.TandC{
+    width: 100%;
+    text-align: justify;
+    /* margin: auto; */
+
+}
+.TandC > p {
+    width:100%;
+    text-align: justify;
+    font-family: sans-serif;
+    color: grey;
+} 
+input {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    
+}
+label {
+    color: rgba(0, 0, 0, 0.716);
+    font-size: 15px;
+    font-family: sans-serif;
+font-weight: bold;
+}
+
+/* Style for the form check (checkbox) */
+.form-check {
+    display: block; /* Display it as a block to align the label and checkbox vertically */
+    margin: 10px 0; /* Add some spacing between form checks */
+}
+
+/* Style for the label of the form check */
+.form-check-label {
+    font-weight: 400; /* Normal font weight */
+    margin-left: 10px; /* Add spacing between the checkbox and label */
+}
+
+/* Style for the checkbox input */
+.form-check-input {
+    width: 20px; /* Adjust the width of the checkbox */
+    height: 20px; /* Adjust the height of the checkbox */
+    margin: 0; /* Remove any default margin */
+}
+
+    </style>
+   
+  </head>
+  <body>
+    <img
+      src="../static/jobeed_logo.png"
+      alt="logo"
+    />
+    <form action="signup" method="POST">
+      <div id="container">
+        <h2>Let's get Started</h2>
+        <p>Enter your Credentials</p>
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          <div > 
+            {{ form.username.label }}
+            {{ form.username(id="Username") }}
+            {% for error in form.username.errors %}
+              <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div > 
+            {{ form.password.label }}
+            {{ form.password(id="Password")}}
+            {% for error in form.password.errors %}
+              <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+          </div>
+          <div class="form-check">
+            {{ form.admin(class="form-check-input") }}
+            <label class="form-check-label" for="admin">
+                Register as Admin
+            </label>
+        </div>
+        
+        <div class="TandC">
+          <p>
+            By creating an account or logging in, you understand and agree to
+            Jobeed's
+            <a href="https://in.indeed.com/legal?hl=en_IN&_ga=2.34208548.447569749.1659348912-1408839683.1659348912#tos">terms.</a>
+            <a href=""></a>
+            You also acknowledge our
+            <a href="https://in.indeed.com/legal?hl=en_IN&_ga=2.196890793.447569749.1659348912-1408839683.1659348912#cookies">Cookie</a>
+            and
+            <a href="https://hrtechprivacy.com/brands/indeed#privacypolicy">Privacy policies.</a
+            > You will receive marketing messages from Jobeed and may opt out at
+            any time by following the unsubscribe link in our messages, or as
+            detailed in our terms.
+          </p>
+          <button id="signUp">SIGN UP</button>
+          <p>
+            Already have an account ? <a href="{{ url_for('login') }}">LOGIN HERE</a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

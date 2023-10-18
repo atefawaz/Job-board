@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Job</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h2 {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px;
+    }
+
+    form {
+      background-color: #fff;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Add a New Job</h2>
+  <form method="POST" action="/add_job">
+    <label for="url">Job Image URL:</label>
+    <input type="text" name="url" required>
+
+    <label for="job_title">Job Title:</label>
+    <input type="text" name="job_title" required>
+
+    <label for="company_name">Company Name:</label>
+    <input type="text" name="company_name" required>
+
+    <label for="location">Location:</label>
+    <input type="text" name "location" required>
+
+    <label for="job_description">Job Description:</label>
+    <textarea name="job_description" required></textarea>
+
+    <label for="application_instructions">Application Instructions:</label>
+    <textarea name="application_instructions" required></textarea>
+
+    <label for="price_range">Price Range:</label>
+    <input type="text" name="price_range" required>
+
+    <label for="duration">Duration:</label>
+    <input type="text" name="duration" required>
+
+    <label for="requirements.education">Education Requirement:</label>
+    <input type="text" name="requirements.education" required>
+
+    <label for="requirements.experience">Experience Requirement:</label>
+    <input type="text" name="requirements.experience" required>
+
+    <input type="submit" value="Add Job">
+  </form>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Offers</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  
+  <style>
+    /* body {
+      font-family: sans-serif;
+    background-color: #f3f2ef;
+    } */
+    * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: #f3f2ef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    /* Header nav bar  */
+    .header__left img {
+    object-fit: contain;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .header {
+    width: 100%;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    justify-content: space-evenly;
+    border-bottom: 0.1px solid lightgray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: black;
+  }
+  
+  .header__left {
+    display: flex;
+  }
+  
+  .header__right {
+    display: flex;
+  }
+  
+  .header__search {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 22px;
+    color: gray;
+    background-color: #eef3f8;
+  }
+  
+  .header__search > input {
+    outline: none;
+    border: none;
+    background: none;
+  }
+  
+  .headerOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .headerOption:hover {
+    color: black;
+  }
+  
+  .headerOption h3 {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 400;
+  }
+  
+  .headerOption__icon {
+    margin-right: 5px;
+    height: 20px;
+    width: 20px;
+  }
+
+    .job-offer-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .job-offer {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 10px;
+      background-color: white;
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .company-logo {
+      max-width: 100px;
+      margin-right: 20px;
+      align-self: center;
+    }
+
+    .company-title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .job-info {
+      align-self: center;
+    }
+
+    .job-info p {
+      margin: 1;
+    }
+
+
+    /* Responsive layout */
+    @media (max-width: 576px) {
+      .job-offer {
+        width: 100%; /* Full width on small screens */
+      }
+    }
+    .logout{
+        color: gray;
+    }
+    p {
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 5px 0;
+  }
+
+  /* Make one <p> element bold */
+  p:nth-child(1) {
+    font-weight: bold;
+  }
+
+  /* Make one <p> element italic */
+  p:nth-child(2) {
+    font-style: italic;
+  }
+
+  /* Customize the design for the <p> elements */
+  p:nth-child(1) {
+    color: black; /* Text color for the bold <p> */
+  }
+
+  p:nth-child(2) {
+    color: #3366ff; /* Text color for the italic <p> */
+  }
+
+
+  .view-details-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3366ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.view-details-button:hover {
+    background-color: #2244aa;
+}
+  </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header__left">
+          <img src="../static/jobeed_logo.png" alt="" />
+          <div class="header__search">
+            <i class="material-icons"> search </i>
+            <input type="text" />
+          </div>
+        </div>
+  
+        <div class="header__right">
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> home </i>
+            <a href="{{ url_for('home')}}"><h3 class="logout">home</h3></a>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> supervisor_account </i>
+            <a href="{{ url_for('admin')}}"><h3 class="logout">Admin only</h3></a>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> business_center </i>
+            <a href="{{ url_for('jobs')}}"><h3 class="logout">Jobs</h3></a>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> chat </i>
+            <h3>Messaging</h3>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> notifications </i>
+            <h3>Notifications</h3>
+          </div>
+          <div class="headerOption">
+            <i class="material-icons headerOption__icon"> account_circle </i>
+            <a href="{{ url_for('logout')}}"><h3 class="logout">logout</h3></a>
+            
+          </div>
+        </div>
+      </div>
+  <div class="job-offer-container">
+    {% for job in jobs %}
+    <div class="job-offer">
+      <img class="company-logo" src="{{ job.url}}" alt="Company Logo">
+      <div>
+        <div class="company-title"> {{ job.company_name}}</div>
+        <div class="job-info">
+          <p>{{ job.job_title }}</p>
+          <p>{{ job.location }}</p>
+          <p>{{ job.price_range }}</p>
+          <a href="{{ url_for('job_detail', job_id=job['_id']) }}" class="view-details-button">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
